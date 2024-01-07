@@ -1,7 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-local bindings = require("lib.bindings")
+local bindings = require("awesome.keys.bindings")
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).

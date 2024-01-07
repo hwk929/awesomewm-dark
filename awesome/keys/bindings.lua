@@ -3,14 +3,14 @@ local awful = require("awful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
-local globs = require("lib.global")
-local menu_drop = require("lib.menu_drop")
+local globs = require("config.awesome")
+local drop = require("awesome.keys.drop")
 
 require("awful.hotkeys_popup.keys")
 
 -- {{{ Mouse bindings
-local mouskeys = gears.table.join(
-    awful.button({ }, 3, function () menu_drop.mymainmenu:toggle() end),
+local mousekeys = gears.table.join(
+    awful.button({ }, 3, function () drop.mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 )
@@ -39,7 +39,7 @@ local globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ globs.modkey,           }, "w", function () menu_drop.mymainmenu:show() end,
+    awful.key({ globs.modkey,           }, "w", function () drop.mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
@@ -228,7 +228,7 @@ local clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
-root.buttons(mouskeys)
+root.buttons(mousekeys)
 -- }}}
 
 return {

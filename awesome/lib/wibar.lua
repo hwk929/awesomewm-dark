@@ -3,8 +3,8 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 
-local globs = require("lib.global")
-local menu_drop = require("lib.menu_drop")
+local globs = require("config.awesome")
+local drop = require("awesome.keys.drop")
 
 -- Keyboard map indicator and switcher
 local mykeyboardlayout = awful.widget.keyboardlayout()
@@ -107,7 +107,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            menu_drop.mylauncher,
+            drop.mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
