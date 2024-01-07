@@ -2,8 +2,8 @@ local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.useless_gap = 5
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/hwk/.config/awesome/themes/default/theme.lua")
 
 -- Defaults
 local modkey = "Mod4"

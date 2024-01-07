@@ -82,6 +82,13 @@ awful.screen.connect_for_each_screen(function(s)
     }, s, awful.layout.layouts[1])
 
     s.mypromptbox = awful.widget.prompt()
+    s.mypromptmarginbox = {
+        s.mypromptbox,
+        left = 10,
+        right = 10,
+        widget = wibox.container.margin,
+    }
+
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutmarginbox = {
         s.mylayoutbox,
@@ -129,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons,
         style = {
             shape_border_width = 1,
-            shape_border_color = "#777777",
+            shape_border_color = beautiful.bg_focus,
             shape = gears.shape.rounded_bar,
         },
 
@@ -175,7 +182,7 @@ awful.screen.connect_for_each_screen(function(s)
                 layout = wibox.layout.fixed.horizontal,
                 s.mylayoutmarginbox,
                 s.mytaglist,
-                s.mypromptbox,
+                s.mypromptmarginbox,
             },
 
             s.mytasklist,
