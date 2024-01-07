@@ -3,7 +3,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local glob = require("config.awesome")
+local glob = require("config.globs")
 
 require("awful.autofocus")
 

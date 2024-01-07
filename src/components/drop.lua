@@ -3,7 +3,7 @@ local beautiful = require("beautiful")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
-local globs = require("config.awesome")
+local globs = require("config.globs")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu

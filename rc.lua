@@ -1,7 +1,11 @@
 pcall(require, "luarocks.loader")
 
+-- Configuration
+require("config.layout")
+require("config.theme")
+
 -- Awesome
-require("awesome.lib.error")
-require("awesome.lib.wibar")
-require("awesome.lib.rules")
-require("awesome.lib.signals")
+require("src.internal.error")
+require("src.internal.wibar")
+require("src.internal.rules")
+require("src.internal.signals")

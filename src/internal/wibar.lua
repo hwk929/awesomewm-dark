@@ -3,8 +3,8 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 
-local globs = require("config.awesome")
-local drop = require("awesome.keys.drop")
+local globs = require("config.globs")
+local drop = require("src.components.drop")
 
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
