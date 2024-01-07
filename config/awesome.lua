@@ -10,11 +10,12 @@ local modkey = "Mod4"
 local terminal = "xterm"
 local editor = os.getenv("EDITOR") or "nano"
 local editor_cmd = terminal .. " -e " .. editor
+local spawn_slave = false
 
 -- Layout
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.floating,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
@@ -32,8 +33,9 @@ awful.layout.layouts = {
 }
 
 return {
+    modkey = modkey,
     terminal = terminal,
     editor = editor,
     editor_cmd = editor_cmd,
-    modkey = modkey
+    spawn_slave = spawn_slave
 }
