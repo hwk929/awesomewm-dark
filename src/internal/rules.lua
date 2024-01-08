@@ -1,10 +1,11 @@
 local awful = require("awful")
+local gears = require("gears")
 local beautiful = require("beautiful")
 
 local cfg = require("src.util.config")
 local bindings = require("src.components.bindings")
 
-awful.rules.rules = {
+awful.rules.rules = gears.table.join({
     {
         rule = {},
         properties = {
@@ -37,9 +38,4 @@ awful.rules.rules = {
 
         properties = { titlebars_enabled = true }
     }
-}
-
--- Load additional rules
-for i in ipairs(cfg.config.window.rules) do
-    awful.rules.rules[#awful.rules.rules+1] = cfg.config.window.rules[i]
-end
+}, cfg.config.window.rules)
