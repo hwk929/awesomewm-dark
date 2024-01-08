@@ -8,6 +8,7 @@
 
     "window": {
         "spawn_slave": false,
+        "show_hotkeys": true,
         "layouts": [
             "tile",
             "floating",
