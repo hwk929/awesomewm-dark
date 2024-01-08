@@ -12,14 +12,13 @@ function Data:new(path, theme)
     end
 
     Data.config = json.decode(file:read("*a"))
-    Data:layout()
+    Data:window()
 
     beautiful.init(theme)
     file:close()
 end
 
--- Awful rules
-function Data:layout()
+function Data:window()
     local t = {}
 
     for _, v in ipairs(Data.config.window.layouts) do

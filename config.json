@@ -58,5 +58,39 @@
                 }
             }
         ]
+    },
+
+    "bindings": {
+        "Audio": [
+            {
+                "alt": ["Shift", "Space"],
+                "key": "=",
+                "title": "Increase Audio",
+                "cmd": "pactl -- set-sink-volume 0 +10%"
+            },
+
+            {
+                "alt": [],
+                "key": "-",
+                "title": "Decrease Audio",
+                "cmd": "pactl -- set-sink-volume 0 -10%"
+            }
+        ],
+
+        "Applications": [
+            {
+                "alt": [],
+                "key": "\\",
+                "title": "Firefox",
+                "cmd": "firefox"
+            },
+
+            {
+                "alt": [],
+                "key": "BackSpace",
+                "title": "File Manager",
+                "cmd": "pcmanfm"
+            }
+        ]
     }
 }
