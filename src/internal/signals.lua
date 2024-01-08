@@ -3,12 +3,12 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local glob = require("config.globs")
+local cfg = require("src.util.config")
 
 require("awful.autofocus")
 
 client.connect_signal("manage", function (c)
-    if glob.spawn_slave then
+    if cfg.config.window.spawn_slave then
         if not awesome.startup then awful.client.setslave(c) end
     end
 

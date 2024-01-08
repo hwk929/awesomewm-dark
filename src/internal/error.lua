@@ -1,6 +1,6 @@
 -- Notification library
 local naughty = require("naughty")
-
+local cfg = require("src.util.config")
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -11,7 +11,7 @@ if awesome.startup_errors then
 else
     naughty.notify({ preset = naughty.config.presets.normal,
                      title = "we are okie dokie",
-                     text = "very much!!!" })
+                     text = tostring(cfg.config.modkey) })
 end
 
 -- Handle runtime errors after startup

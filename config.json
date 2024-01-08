@@ -1,0 +1,30 @@
+{
+    "modkey": "Mod4",
+    "terminal": "xterm",
+    "editor": {
+        "app": "nano",
+        "cmd": "xterm -e nano"
+    },
+
+    "window": {
+        "spawn_slave": false,
+        "layouts": [
+            "tile",
+            "floating",
+            "tile.left",
+            "tile.bottom",
+            "tile.top",
+            "fair",
+            "fair.horizontal",
+            "spiral",
+            "spiral.dwindle",
+            "max",
+            "max.fullscreen",
+            "magnifier",
+            "corner.nw",
+            "corner.ne",
+            "corner.sw",
+            "corner.se"
+        ]
+    }
+}

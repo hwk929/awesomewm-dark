@@ -3,12 +3,12 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 
-local globs = require("config.globs")
+local cfg = require("src.util.config")
 local drop = require("src.components.drop")
 
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
-    awful.button({ globs.modkey }, 1,
+    awful.button({ cfg.config.modkey }, 1,
         function(t)
             if client.focus then
                 client.focus:move_to_tag(t)
@@ -17,7 +17,7 @@ local taglist_buttons = gears.table.join(
     ),
 
     awful.button({}, 3, awful.tag.viewtoggle),
-    awful.button({ globs.modkey }, 3,
+    awful.button({ cfg.config.modkey }, 3,
         function(t)
             if client.focus then
                 client.focus:toggle_tag(t)
