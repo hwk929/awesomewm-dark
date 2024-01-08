@@ -44,6 +44,17 @@
                     "screen": 1,
                     "tag": "9"
                 }
+            },
+
+            {
+                "rule": {
+                    "class": "steam"
+                },
+
+                "properties": {
+                    "screen": 1,
+                    "tag": "8"
+                }
             }
         ]
     }
