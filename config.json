@@ -25,6 +25,26 @@
             "corner.ne",
             "corner.sw",
             "corner.se"
+        ],
+
+        "floating": {
+            "instance": ["copyq"],
+            "class": ["Arandr", "Quaver"],
+            "name": ["Event Tester"],
+            "role": ["pop-up"]
+        },
+
+        "rules": [
+            {
+                "rule": {
+                    "class": "discord"
+                },
+
+                "properties": {
+                    "screen": 1,
+                    "tag": "9"
+                }
+            }
         ]
     }
 }
