@@ -12,7 +12,7 @@ return gears.table.join(
         { description = "Open a terminal", group = "Launcher" }
     ),
 
-    awful.key({ cfg.config.modkey }, "r",
+    awful.key({ cfg.config.modkey, "Shift" }, "r",
         function()
             awful.screen.focused().mypromptbox:run()
         end,

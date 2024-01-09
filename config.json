@@ -65,14 +65,14 @@
             {
                 "alt": ["Shift", "Space"],
                 "key": "=",
-                "title": "Increase Audio",
+                "title": "Increase audio",
                 "cmd": "pactl -- set-sink-volume 0 +10%"
             },
 
             {
                 "alt": [],
                 "key": "-",
-                "title": "Decrease Audio",
+                "title": "Decrease audio",
                 "cmd": "pactl -- set-sink-volume 0 -10%"
             }
         ],
@@ -90,6 +90,20 @@
                 "key": "BackSpace",
                 "title": "File Manager",
                 "cmd": "pcmanfm"
+            },
+
+            {
+                "alt": [],
+                "key": "f",
+                "title": "rofi drun",
+                "cmd": "rofi -disable-history -show drun"
+            },
+
+            {
+                "alt": [],
+                "key": "r",
+                "title": "rofi run",
+                "cmd": "rofi -disable-history -show run"
             }
         ]
     }

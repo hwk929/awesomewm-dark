@@ -4,7 +4,7 @@ local cfg = require("src.util.config")
 
 return gears.table.join(
     awful.key( { cfg.config.modkey, "Control" }, "space", awful.client.floating.toggle, { description = "Toggle floating", group = "Client" }),
-    awful.key({ cfg.config.modkey }, "f",
+    awful.key({ cfg.config.modkey, "Shift" }, "f",
         function(c)
             c.fullscreen = not c.fullscreen
             c:raise()
