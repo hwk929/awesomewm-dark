@@ -1,9 +1,10 @@
+local awful = require("awful")
 local beautiful = require("beautiful")
 local json = require("src.util.json")
 
 Data = { config = {} }
 
-function Data:new(path, theme)
+function Data:new(path, theme, autostart)
     local file = io.open(path, "rb")
 
     if not file then
@@ -14,6 +15,7 @@ function Data:new(path, theme)
     Data.config = json.decode(file:read("*a"))
     Data:window()
 
+    awful.spawn.with_shell(autostart)
     beautiful.init(theme)
     file:close()
 end

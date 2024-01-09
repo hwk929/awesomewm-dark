@@ -1,0 +1,15 @@
+#!/bin/sh
+
+run() {
+    if ! pgrep -f "$1"; then
+        "$@" &
+    fi
+}
+
+# Applications
+run "picom"
+run "lxsession"
+run "nm-applet"
+
+# Screen config
+run "/home/hwk/.screenlayout/dual-tv.sh"
