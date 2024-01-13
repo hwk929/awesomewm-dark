@@ -107,8 +107,6 @@ local function createFade(self, c3, index, objects)
         "#22242d"
     }
 
-    self.bg = beautiful.bg_normal
-
     for i in pairs(objects) do
         if objects[i].selected then
             sel = objects[i].index
@@ -116,7 +114,6 @@ local function createFade(self, c3, index, objects)
     end
 
     if (c3.selected) then
-        self.bg = beautiful.bg_normal -- always use bg_normal in this case
         weight = "ultrabold"
     end
 
@@ -175,6 +172,7 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.margin
             },
 
+            id = "background_role",
             widget = wibox.container.background,
             create_callback = createFade,
             update_callback = createFade,
@@ -225,7 +223,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox = awful.wibar({
         position = "top",
         screen = s,
-        height = 30,
+        height = 30
     })
 
     s.mywibox:setup {

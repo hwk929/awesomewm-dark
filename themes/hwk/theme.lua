@@ -22,16 +22,13 @@ theme.border_normal = theme.bg_normal
 theme.border_focus = "#bd93f9" -- "#6272a4"
 theme.border_marked = "#ff79c6"
 
--- Generate taglist squares:
+-- Wibar
 local taglist_square_size = dpi(3)
 
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, "#bd93f9"
-)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, "#bd93f9")
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, "#bd93f9")
 
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, "#bd93f9"
-)
+theme.taglist_bg_focus = theme.bg_normal
 
 -- Menu
 theme.menu_height = dpi(25)
