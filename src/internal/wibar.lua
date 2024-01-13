@@ -6,6 +6,18 @@ local wibox = require("wibox")
 local cfg = require("src.util.config")
 local drop = require("src.components.drop")
 
+-- Full fade list:
+--   "#ffffff",
+--   "#e8e9ea",
+--   "#d2d2d4",
+--   "#bbbcbf",
+--   "#a5a6a9",
+--   "#8e8f94",
+--   "#78797f",
+--   "#616369",
+--   "#4b4d54",
+--   "#34363e"
+
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
     awful.button({ cfg.config.modkey }, 1,
@@ -73,6 +85,35 @@ local mytextclock = {
     widget = wibox.container.margin,
 }
 
+local function createFade(self, c3, index, objects)
+    local sel = 1
+    local weight = "normal"
+    local fade = {
+        "#ffffff",
+        "#a5a6a9",
+        "#78797f",
+        "#4b4d54",
+        "#34363e",
+        "#34363e",
+        "#34363e",
+        "#34363e",
+        "#34363e"
+    }
+
+    for i in pairs(objects) do
+        if objects[i].selected then
+            sel = objects[i].index
+        end
+    end
+
+    if (c3.selected) then
+        weight = "ultrabold"
+    end
+
+    self:get_children_by_id("index_role")[1].markup = "<span weight='" .. weight .. "' color='" .. fade[math.abs(index-sel)+1] .. "' font_desc='FreeMono 8'>" .. index .. "</span>"
+end
+
+
 awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
     awful.tag({
@@ -107,12 +148,11 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen = s,
         filter = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons,
         widget_template = {
             {
                 {
                     {
-                        id = "text_role",
+                        id = "index_role",
                         widget = wibox.widget.textbox,
                     },
 
@@ -126,7 +166,11 @@ awful.screen.connect_for_each_screen(function(s)
 
             id = "background_role",
             widget = wibox.container.background,
+            create_callback = createFade,
+            update_callback = createFade,
         },
+
+        buttons = taglist_buttons
     }
 
     -- Create a tasklist widget
