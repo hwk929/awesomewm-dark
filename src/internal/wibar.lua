@@ -75,7 +75,10 @@ local function set_wallpaper(s)
         end
 
         gears.wallpaper.maximized(wallpaper, s, true)
+        return
     end
+
+    gears.wallpaper.set(beautiful.bg_normal)
 end
 
 local mytextclock = {

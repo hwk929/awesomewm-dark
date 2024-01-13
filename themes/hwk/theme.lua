@@ -7,7 +7,7 @@ local theme = {}
 
 -- https://github.com/dracula/dracula-theme
 theme.bg_normal = "#1e2029"
-theme.bg_focus = "#282a36"
+theme.bg_focus = "#1e2029" -- "#282a36"
 theme.bg_urgent = "#ff5555"
 theme.bg_minimize = "#000000"
 theme.bg_systray = theme.bg_normal
@@ -19,7 +19,7 @@ theme.fg_urgent = "#f8f8f2"
 theme.useless_gap = dpi(4)
 theme.border_width = dpi(3)
 theme.border_normal = theme.bg_normal
-theme.border_focus = "#6272a4"
+theme.border_focus = "#bd93f9" -- "#6272a4"
 theme.border_marked = "#ff79c6"
 
 -- Generate taglist squares:
