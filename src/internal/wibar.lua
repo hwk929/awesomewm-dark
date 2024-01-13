@@ -17,6 +17,10 @@ local drop = require("src.components.drop")
 --   "#616369",
 --   "#4b4d54",
 --   "#34363e"
+--   "#30323a",
+--   "#2b2d36",
+--   "#272932",
+--   "#22242d"
 
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -97,11 +101,13 @@ local function createFade(self, c3, index, objects)
         "#78797f",
         "#4b4d54",
         "#34363e",
-        "#34363e",
-        "#34363e",
-        "#34363e",
-        "#34363e"
+        "#30323a",
+        "#2b2d36",
+        "#272932",
+        "#22242d"
     }
+
+    self.bg = beautiful.bg_normal
 
     for i in pairs(objects) do
         if objects[i].selected then
@@ -110,6 +116,7 @@ local function createFade(self, c3, index, objects)
     end
 
     if (c3.selected) then
+        self.bg = beautiful.bg_normal -- always use bg_normal in this case
         weight = "ultrabold"
     end
 
@@ -148,6 +155,7 @@ awful.screen.connect_for_each_screen(function(s)
         awful.button({}, 5, function() awful.layout.inc(-1) end))
     )
 
+    -- Create taglist
     s.mytaglist = awful.widget.taglist {
         screen = s,
         filter = awful.widget.taglist.filter.all,
@@ -167,7 +175,6 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.margin
             },
 
-            id = "background_role",
             widget = wibox.container.background,
             create_callback = createFade,
             update_callback = createFade,
@@ -176,7 +183,7 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = taglist_buttons
     }
 
-    -- Create a tasklist widget
+    -- Create tasklist
     s.mytasklist = awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,

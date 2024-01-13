@@ -7,7 +7,7 @@ local theme = {}
 
 -- https://github.com/dracula/dracula-theme
 theme.bg_normal = "#1e2029"
-theme.bg_focus = "#1e2029" -- "#282a36"
+theme.bg_focus = "#282a36"
 theme.bg_urgent = "#ff5555"
 theme.bg_minimize = "#000000"
 theme.bg_systray = theme.bg_normal
