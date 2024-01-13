@@ -104,6 +104,13 @@
                 "key": "r",
                 "title": "rofi run",
                 "cmd": "rofi -disable-history -show run"
+            },
+
+            {
+                "alt": [],
+                "key": "c",
+                "title": "copyq menu",
+                "cmd": "copyq menu"
             }
         ]
     }

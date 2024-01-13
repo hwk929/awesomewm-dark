@@ -10,6 +10,9 @@ run() {
 run "picom"
 run "lxsession"
 run "nm-applet"
+run "flameshot"
+run "copyq"
 
 # Screen config
-run "/home/hwk/.screenlayout/dual-tv.sh"
+run "/home/hwk/.config/screenlayout/dual-tv.sh"
+run "/home/hwk/.config/awesome/themes/hwk/wallpaper"

@@ -33,13 +33,46 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, { position = "left", size = 25 }) : setup {
+    awful.titlebar(c, { position = "left", size = 30 }) : setup {
         {
+
             {
-                awful.titlebar.widget.closebutton(c),
-                awful.titlebar.widget.maximizedbutton(c),
-                awful.titlebar.widget.minimizebutton(c),
-                layout = wibox.layout.fixed.vertical
+                {
+                    {
+                        {
+                            awful.titlebar.widget.closebutton(c),
+                            layout = wibox.layout.fixed.vertical
+                        },
+
+                        layout = wibox.container.margin,
+                        bottom = 5,
+                    },
+
+                    {
+                        {
+                            awful.titlebar.widget.maximizedbutton(c),
+                            layout = wibox.layout.fixed.vertical
+                        },
+
+                        layout = wibox.container.margin,
+                        bottom = 5,
+                    },
+
+                    {
+                        {
+                            awful.titlebar.widget.minimizebutton(c),
+                            layout = wibox.layout.fixed.vertical
+                        },
+
+                        layout = wibox.container.margin,
+                        bottom = 5,
+                    },
+
+                    layout = wibox.layout.fixed.vertical
+                },
+
+                layout = wibox.container.margin,
+                margins = 6,
             },
 
             {
@@ -64,7 +97,7 @@ client.connect_signal("request::titlebars", function(c)
                 },
 
                 layout = wibox.container.margin,
-                margins = 3,
+                margins = 8,
             },
 
             expand = "none",
@@ -81,13 +114,26 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("focus", function(c)
+    if c.floating then
+        c.border_color = beautiful.border_normal
+        return
+    end
+
+    c.border_color = beautiful.border_focus
+end)
+
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Toggle titlebar when floating
 local function float_toggle(c)
-    if c.floating then awful.titlebar.show(c, "left")
-    else awful.titlebar.hide(c, "left") end
+    if c.floating then
+        awful.titlebar.show(c, "left")
+        c.border_color = beautiful.border_normal
+    else
+        awful.titlebar.hide(c, "left")
+        c.border_color = beautiful.border_focus
+    end
 end
 
 client.connect_signal("property::floating", float_toggle)
