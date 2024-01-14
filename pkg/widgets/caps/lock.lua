@@ -2,6 +2,8 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 
+local ICON_DIR = os.getenv("HOME") .. "/.config/awesome/pkg/widgets/caps/icons/"
+
 local caps_lock_script = "bash -c 'xset -q | sed -n \"s/^.*Caps Lock:\\s*\\(\\S*\\).*$/\\1/p\"'"
 local caps_lock_status_old = nil
 
@@ -26,19 +28,24 @@ gears.timer {
 
 -- Create the widget
 local locks = wibox.widget {
-    text = " 🔒 ",
-    align  = "center",
-    valign = "center",
-    widget = wibox.widget.textbox
+    {
+        {
+            image = ICON_DIR .. "lock.svg",
+            widget = wibox.widget.imagebox
+        },
+
+        margins = 4,
+        widget = wibox.layout.margin
+    },
+
+    visible = false,
+    left = 4,
+    right = 2,
+    widget = wibox.layout.margin
 }
 
 awesome.connect_signal("signal::capslock", function(c)
-    if not c then
-        locks.text = ""
-        return
-    end
-
-    locks.text = " 🔒 "
+    locks.visible = c
 end)
 
 return locks
