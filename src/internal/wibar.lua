@@ -4,7 +4,10 @@ local beautiful = require("beautiful")
 local wibox = require("wibox")
 
 local cfg = require("src.util.config")
-local drop = require("src.components.drop")
+
+local taskbar_widget = require("pkg.widgets.taskbar.tray")
+local logout_widget = require("pkg.widgets.logout.menu")
+local date_widget = require("pkg.widgets.date.clock")
 
 -- Full fade list:
 --   "#ffffff",
@@ -85,13 +88,6 @@ local function set_wallpaper(s)
     gears.wallpaper.set(beautiful.bg_normal)
 end
 
-local mytextclock = {
-    wibox.widget.textclock("%m/%d/%y %l:%M%P", 30),
-    left = 10,
-    right = 10,
-    widget = wibox.container.margin,
-}
-
 local function createFade(self, c3, index, objects)
     local sel = 1
     local weight = "normal"
@@ -117,7 +113,11 @@ local function createFade(self, c3, index, objects)
         weight = "ultrabold"
     end
 
-    self:get_children_by_id("index_role")[1].markup = "<span weight='" .. weight .. "' color='" .. fade[math.abs(index-sel)+1] .. "' font_desc='FreeMono 8'>" .. index .. "</span>"
+    self:get_children_by_id("index_role")[1].markup =
+        "<span weight='" .. weight ..
+            "' color='".. fade[math.abs(index-sel)+1] ..
+            "' font_desc='FreeMono 8'>" .. index ..
+        "</span>"
 end
 
 
@@ -241,9 +241,9 @@ awful.screen.connect_for_each_screen(function(s)
 
             {
                 layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
-                mytextclock,
-                drop.mylauncher,
+                taskbar_widget,
+                date_widget,
+                logout_widget(),
             },
         },
 

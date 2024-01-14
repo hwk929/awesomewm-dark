@@ -1,2 +1,8 @@
+# Local
+/tmp
+/pkg/awesome-buttons
+/pkg/awesome-*
+
+# Private
 config.json
 todo

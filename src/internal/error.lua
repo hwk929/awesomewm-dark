@@ -17,7 +17,7 @@ do
 
         naughty.notify({
             preset = naughty.config.presets.critical,
-            title = "Oops, an error happened!",
+            title = "Oops, an error occurred!",
             text = tostring(err)
         })
 
