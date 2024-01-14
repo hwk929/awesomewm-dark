@@ -10,8 +10,23 @@ local ICON_DIR = os.getenv("HOME") .. "/.config/awesome/pkg/widgets/taskbar/icon
 
 -- Create elements
 local systray = wibox.widget.systray(); systray.base_size = 24
-local sys_button = awful.widget.button {
-    image = ICON_DIR .. "drop.svg",
+local sys_button = wibox.widget {
+    {
+        {
+            image = ICON_DIR .. "drop.svg",
+            resize = true,
+            widget = wibox.widget.imagebox,
+        },
+
+        margins = 4,
+        layout = wibox.container.margin
+    },
+
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 4)
+    end,
+
+    widget = wibox.container.background,
 }
 
 local rows_tray = { layout = wibox.layout.fixed.vertical }
@@ -68,8 +83,10 @@ sys_button:buttons(
     awful.util.table.join(awful.button({}, 1, function()
         if pop_tray.visible then
             pop_tray.visible = not pop_tray.visible
+            sys_button:set_bg("#00000000")
         else
             pop_tray:move_next_to(mouse.current_widget_geometry)
+            sys_button:set_bg(beautiful.bg_focus)
         end
     end))
 )
