@@ -6,8 +6,9 @@ local wibox = require("wibox")
 local cfg = require("src.util.config")
 
 local taskbar_widget = require("pkg.widgets.taskbar.tray")
-local logout_widget = require("pkg.widgets.logout.menu")
+local capslock_widget = require("pkg.widgets.caps.lock")
 local date_widget = require("pkg.widgets.date.clock")
+local logout_widget = require("pkg.widgets.logout.menu")
 
 -- Full fade list:
 --   "#ffffff",
@@ -242,6 +243,7 @@ awful.screen.connect_for_each_screen(function(s)
             {
                 layout = wibox.layout.fixed.horizontal,
                 taskbar_widget,
+                capslock_widget,
                 date_widget,
                 logout_widget(),
             },

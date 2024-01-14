@@ -13,7 +13,7 @@ local calendar = calendar_widget{
     placement = "top_right",
 }
 
-cc:connect_signal("button::press", function(_, _, _, button)
+cc:connect_signal("button::press", function(_, _1, _2, button) -- luacheck: no unused
     if button == 1 then calendar.toggle() end
 end)
 
