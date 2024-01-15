@@ -1,7 +1,7 @@
 local xresources = require("beautiful.xresources")
 
 local dpi = xresources.apply_dpi
-local themes_path = "/home/hwk/.config/awesome/themes/hwk"
+local themes_path = "/home/hwk/.config/awesome/pkg/theme"
 local theme = {}
 
 -- https://github.com/dracula/dracula-theme

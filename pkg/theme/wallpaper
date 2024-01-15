@@ -1,6 +1,6 @@
 #!/bin/sh
 
 walls=/home/hwk/Pictures/wallpapers
-bg=/home/hwk/.config/awesome/themes/hwk
+bg=/home/hwk/.config/awesome/pkg/theme
 
 ln -sf $walls/$(ls $walls | shuf -n 1) $bg/bg

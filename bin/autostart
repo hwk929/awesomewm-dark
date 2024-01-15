@@ -15,4 +15,4 @@ run "copyq"
 
 # Screen config
 run "/home/hwk/.config/screenlayout/dual-tv.sh"
-run "/home/hwk/.config/awesome/themes/hwk/wallpaper"
+run "/home/hwk/.config/awesome/pkg/theme/wallpaper"

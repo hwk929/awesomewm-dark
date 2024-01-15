@@ -2,7 +2,7 @@ pcall(require, "luarocks.loader")
 
 require("src.util.config"):new(
     "/home/hwk/.config/awesome/config.json",
-    "/home/hwk/.config/awesome/themes/hwk/theme.lua",
+    "/home/hwk/.config/awesome/pkg/theme/theme.lua",
     "/home/hwk/.config/awesome/bin/autostart"
 )
 
