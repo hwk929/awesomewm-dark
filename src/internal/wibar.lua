@@ -7,6 +7,7 @@ local cfg = require("src.util.config")
 
 local taskbar_widget = require("pkg.widgets.taskbar.tray")
 local capslock_widget = require("pkg.widgets.caps.lock")
+local upgradeable_widget = require("pkg.widgets.packages.upgrade")
 local date_widget = require("pkg.widgets.date.clock")
 local logout_widget = require("pkg.widgets.logout.menu")
 
@@ -243,9 +244,22 @@ awful.screen.connect_for_each_screen(function(s)
             {
                 layout = wibox.layout.fixed.horizontal,
                 taskbar_widget,
-                capslock_widget,
+
+                {
+                    {
+                        capslock_widget,
+                        upgradeable_widget,
+
+                        spacing = 8,
+                        layout = wibox.layout.fixed.horizontal,
+                    },
+
+                    right = 8,
+                    layout = wibox.layout.margin
+                },
+
                 date_widget,
-                logout_widget(),
+                logout_widget,
             },
         },
 

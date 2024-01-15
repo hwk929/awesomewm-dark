@@ -40,92 +40,87 @@ local popup = awful.popup {
     end
 }
 
-local function worker(user_args)
-    local rows = { layout = wibox.layout.fixed.vertical }
-    local args = user_args or {}
-    local font = args.font or beautiful.font
+-- Create menu
+local rows = { layout = wibox.layout.fixed.vertical }
+local font = beautiful.font
 
-    local onlock = args.onlock or function() awful.spawn.with_shell("i3lock") end
-    local onreboot = args.onreboot or function() awful.spawn.with_shell("reboot") end
-    local onpoweroff = args.onpoweroff or function() awful.spawn.with_shell("shutdown now") end
+local onlock = function() awful.spawn.with_shell("i3lock") end
+local onreboot = function() awful.spawn.with_shell("reboot") end
+local onpoweroff = function() awful.spawn.with_shell("shutdown now") end
 
-    local menu_items = {
-        { name = "Lock", icon_name = "lock.svg", command = onlock },
-        { name = "Reboot", icon_name = "refresh-cw.svg", command = onreboot },
-        { name = "Power off", icon_name = "power.svg", command = onpoweroff },
-    }
+local menu_items = {
+    { name = "Lock", icon_name = "lock.svg", command = onlock },
+    { name = "Reboot", icon_name = "refresh-cw.svg", command = onreboot },
+    { name = "Power off", icon_name = "power.svg", command = onpoweroff },
+}
 
-    for _, item in ipairs(menu_items) do
-        local row = wibox.widget {
+for _, item in ipairs(menu_items) do
+    local row = wibox.widget {
+        {
             {
                 {
-                    {
-                        image = ICON_DIR .. item.icon_name,
-                        resize = false,
-                        widget = wibox.widget.imagebox
-                    },
-
-                    {
-                        text = item.name,
-                        font = font,
-                        widget = wibox.widget.textbox
-                    },
-
-                    spacing = 12,
-                    layout = wibox.layout.fixed.horizontal
+                    image = ICON_DIR .. item.icon_name,
+                    resize = false,
+                    widget = wibox.widget.imagebox
                 },
 
-                margins = 8,
-                layout = wibox.container.margin
+                {
+                    text = item.name,
+                    font = font,
+                    widget = wibox.widget.textbox
+                },
+
+                spacing = 12,
+                layout = wibox.layout.fixed.horizontal
             },
 
-            bg = beautiful.bg_normal,
-            widget = wibox.container.background
-        }
+            margins = 8,
+            layout = wibox.container.margin
+        },
 
-        row:connect_signal("mouse::enter", function(c) c:set_bg(beautiful.bg_focus) end)
-        row:connect_signal("mouse::leave", function(c) c:set_bg(beautiful.bg_normal) end)
+        bg = beautiful.bg_normal,
+        widget = wibox.container.background
+    }
 
-        local old_cursor, old_wibox
+    row:connect_signal("mouse::enter", function(c) c:set_bg(beautiful.bg_focus) end)
+    row:connect_signal("mouse::leave", function(c) c:set_bg(beautiful.bg_normal) end)
 
-        row:connect_signal("mouse::enter", function()
-            local wb = mouse.current_wibox
+    local old_cursor, old_wibox
 
-            old_cursor, old_wibox = wb.cursor, wb
-            wb.cursor = "hand1"
-        end)
+    row:connect_signal("mouse::enter", function()
+        local wb = mouse.current_wibox
 
-        row:connect_signal("mouse::leave", function()
-            if old_wibox then
-                old_wibox.cursor = old_cursor
-                old_wibox = nil
-            end
-        end)
+        old_cursor, old_wibox = wb.cursor, wb
+        wb.cursor = "hand1"
+    end)
 
-        row:buttons(awful.util.table.join(awful.button({}, 1, function()
-            popup.visible = not popup.visible
-            item.command()
-        end)))
+    row:connect_signal("mouse::leave", function()
+        if old_wibox then
+            old_wibox.cursor = old_cursor
+            old_wibox = nil
+        end
+    end)
 
-        table.insert(rows, row)
-    end
+    row:buttons(awful.util.table.join(awful.button({}, 1, function()
+        popup.visible = not popup.visible
+        item.command()
+    end)))
 
-    popup:setup(rows)
-
-    logout_menu_widget:buttons(awful.util.table.join(
-        awful.button({}, 1, function()
-            if popup.visible then
-                popup.visible = not popup.visible
-                logout_menu_widget:set_bg("#00000000")
-            else
-                popup:move_next_to(mouse.current_widget_geometry)
-                logout_menu_widget:set_bg(beautiful.bg_focus)
-            end
-        end))
-    )
-
-    return logout_menu_widget
-
+    table.insert(rows, row)
 end
 
-return worker
+popup:setup(rows)
+
+logout_menu_widget:buttons(awful.util.table.join(
+    awful.button({}, 1, function()
+        if popup.visible then
+            popup.visible = not popup.visible
+            logout_menu_widget:set_bg("#00000000")
+        else
+            popup:move_next_to(mouse.current_widget_geometry)
+            logout_menu_widget:set_bg(beautiful.bg_focus)
+        end
+    end))
+)
+
+return logout_menu_widget

@@ -30,22 +30,30 @@ gears.timer {
 local locks = wibox.widget {
     {
         {
-            image = ICON_DIR .. "lock.svg",
-            widget = wibox.widget.imagebox
+            {
+                image = ICON_DIR .. "lock.svg",
+                widget = wibox.widget.imagebox
+            },
+
+            margins = 4,
+            widget = wibox.layout.margin
         },
 
-        margins = 4,
-        widget = wibox.layout.margin
+        {
+            markup = "<span weight='bold' color='#a5a6a9'> Caps</span>",
+            widget = wibox.widget.textbox
+        },
+
+        layout = wibox.layout.fixed.horizontal
     },
 
     visible = false,
-    left = 4,
-    right = 2,
-    widget = wibox.layout.margin
+    left = 8, -- push taskbar left
+    layout = wibox.layout.margin
 }
 
 awesome.connect_signal("signal::capslock", function(c)
-    locks.visible = c
+    locks:set_visible(c)
 end)
 
 return locks
