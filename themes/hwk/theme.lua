@@ -21,6 +21,8 @@ theme.border_normal = theme.bg_normal
 theme.border_focus = "#bd93f9" -- "#6272a4"
 theme.border_marked = "#ff79c6"
 
+theme.hotkeys_modifiers_fg = "#adadad"
+
 -- Wibar
 theme.taglist_squares_sel = themes_path.."/taglist/squarefw.png"
 theme.taglist_squares_unsel = themes_path.."/taglist/squarew.png"

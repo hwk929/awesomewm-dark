@@ -4,8 +4,7 @@ local wibox = require("wibox")
 
 local ICON_DIR = os.getenv("HOME") .. "/.config/awesome/pkg/widgets/packages/icons/"
 
--- local upgradeable = "bash -c 'checkupdates | wc -l'"
-local upgradeable = "bash -c 'cat /home/hwk/.config/awesome/todo | wc -l'"
+local upgradeable = "bash -c 'checkupdates | wc -l'"
 local old_upgradeable = nil
 
 local function fetch_updates()
@@ -20,7 +19,7 @@ local function fetch_updates()
 end
 
 gears.timer {
-    timeout = 2,
+    timeout = 120,
     call_now = true,
     autostart = true,
     callback = fetch_updates
@@ -40,17 +39,16 @@ local updates = wibox.widget {
 
     {
         id = "upgradeable_role",
-        markup = "<span weight='bold' color='#a5a6a9'>0x</span>",
+        markup = "<span weight='bold'> 0x</span>",
         widget = wibox.widget.textbox
     },
 
-    visible = true,
     layout = wibox.layout.fixed.horizontal
 }
 
 awesome.connect_signal("signal::upgradeable_packages", function(c)
     updates:get_children_by_id("upgradeable_role")[1].markup =
-        "<span weight='bold' color='#a5a6a9'> "
+        "<span weight='bold'> "
             .. tostring(c) ..
         "x</span>"
 end)

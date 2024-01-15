@@ -40,7 +40,7 @@ local locks = wibox.widget {
         },
 
         {
-            markup = "<span weight='bold' color='#a5a6a9'> Caps</span>",
+            markup = "<span weight='bold'> Caps</span>",
             widget = wibox.widget.textbox
         },
 
@@ -48,7 +48,7 @@ local locks = wibox.widget {
     },
 
     visible = false,
-    left = 8, -- push taskbar left
+    left = 6, -- push taskbar left
     layout = wibox.layout.margin
 }
 
