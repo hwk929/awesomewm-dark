@@ -21,6 +21,8 @@ theme.border_normal = theme.bg_normal
 theme.border_focus = "#bd93f9" -- "#6272a4"
 theme.border_marked = "#ff79c6"
 
+-- Extras
+theme.titlebar_bg_focus = theme.bg_normal
 theme.hotkeys_modifiers_fg = "#adadad"
 
 -- Wibar
