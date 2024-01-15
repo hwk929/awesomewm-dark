@@ -1,10 +1,7 @@
 {
     "modkey": "Mod4",
     "terminal": "xterm",
-    "editor": {
-        "app": "nano",
-        "cmd": "xterm -e nano"
-    },
+    "editor": "xterm -e nano",
 
     "window": {
         "spawn_slave": false,

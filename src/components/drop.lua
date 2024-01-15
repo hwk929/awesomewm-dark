@@ -8,7 +8,7 @@ local cfg = require("src.util.config")
 local myawesomemenu = {
     { "Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
     { "Manual", cfg.config.terminal .. " -e man awesome" },
-    { "Edit Config", cfg.config.editor.cmd .. " " .. awesome.conffile },
+    { "Edit Config", cfg.config.editor .. " " .. awesome.conffile },
     { "Restart", awesome.restart },
     { "Quit", function() awesome.quit() end },
 }
