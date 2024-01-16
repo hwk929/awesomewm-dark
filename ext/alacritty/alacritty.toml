@@ -1,0 +1,10 @@
+import = ["/home/hwk/.config/alacritty/dracula.toml"]
+
+[window]
+padding.x = 15
+padding.y = 15
+
+[cursor]
+style.shape = "Underline"
+style.blinking = "On"
+blink_interval = 600
