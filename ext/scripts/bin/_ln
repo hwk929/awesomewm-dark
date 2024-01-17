@@ -1,0 +1,14 @@
+#!/bin/sh
+
+scripts_dir="/home/hwk/dev/bin"
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root."
+    exit 1
+fi
+
+# dual-tv
+ln -sf $scripts_dir/dual-tv /home/hwk/.config/screenlayout/dual-tv.sh
+
+# resolv-pi
+sudo ln -sf $scripts_dir/_resolv-pi /usr/local/bin/resolv-pi
