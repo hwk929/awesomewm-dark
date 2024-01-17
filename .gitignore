@@ -1,6 +1,7 @@
 # Local
 /tmp
+todo
 
 # Private
+/bin/autostart
 config.json
-todo
