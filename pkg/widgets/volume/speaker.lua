@@ -42,7 +42,7 @@ local updates = wibox.widget {
         },
 
         margins = 2,
-        widget = wibox.layout.margin
+        widget = wibox.container.margin
     },
 
     {

@@ -4,6 +4,13 @@ local dpi = xresources.apply_dpi
 local themes_path = "/home/hwk/.config/awesome/pkg/theme"
 local theme = {}
 
+local function bg_check(name)
+    local f = io.open(name, "r")
+    if f ~= nil then io.close(f) return true end
+
+    return false
+end
+
 -- https://github.com/dracula/dracula-theme
 theme.bg_normal = "#1e2029"
 theme.bg_focus = "#282a36"
@@ -117,9 +124,12 @@ theme.layout_cornerne = themes_path.."/layouts/cornerne.png"
 theme.layout_cornersw = themes_path.."/layouts/cornersw.png"
 theme.layout_cornerse = themes_path.."/layouts/cornerse.png"
 
-theme.icon_theme = nil
 theme.font = "FreeMono 8"
-theme.wallpaper = themes_path.."/bg"
+theme.icon_theme = nil
+theme.wallpaper = nil
+
+if bg_check(themes_path.."/bg") then
+    theme.wallpaper = themes_path.."/bg"
+end
 
 return theme
-

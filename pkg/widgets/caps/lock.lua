@@ -36,7 +36,7 @@ local locks = wibox.widget {
             },
 
             margins = 4,
-            widget = wibox.layout.margin
+            widget = wibox.container.margin
         },
 
         {
@@ -49,7 +49,7 @@ local locks = wibox.widget {
 
     visible = false,
     left = 6, -- push taskbar left
-    layout = wibox.layout.margin
+    layout = wibox.container.margin
 }
 
 awesome.connect_signal("signal::capslock", function(c)
