@@ -2,7 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local json = require("src.util.json")
 
-Data = { config = {} }
+local Data = { config = {} }
 
 function Data:new(path, theme, autostart)
     local file = io.open(path, "rb")

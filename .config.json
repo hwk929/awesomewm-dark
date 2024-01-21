@@ -1,11 +1,11 @@
 {
     "modkey": "Mod4",
-    "terminal": "xterm",
-    "editor": "xterm -e nano",
+    "terminal": "alacritty",
+    "editor": "alacritty -e code",
 
     "window": {
         "spawn_slave": false,
-        "show_hotkeys": true,
+        "show_hotkeys": false,
         "layouts": [
             "tile",
             "floating",
@@ -27,7 +27,7 @@
 
         "floating": {
             "instance": ["copyq"],
-            "class": ["Arandr", "Quaver"],
+            "class": ["Arandr", "Quaver", "pavucontrol"],
             "name": ["Event Tester"],
             "role": ["pop-up"]
         },
@@ -39,7 +39,6 @@
                 },
 
                 "properties": {
-                    "screen": 1,
                     "tag": "9"
                 }
             },
@@ -50,7 +49,6 @@
                 },
 
                 "properties": {
-                    "screen": 1,
                     "tag": "8"
                 }
             }
@@ -60,17 +58,31 @@
     "bindings": {
         "Audio": [
             {
-                "alt": ["Shift", "Space"],
+                "alt": [],
                 "key": "=",
-                "title": "Increase audio",
+                "title": "Audio + 10%",
                 "cmd": "pactl -- set-sink-volume 0 +10%"
             },
 
             {
                 "alt": [],
                 "key": "-",
-                "title": "Decrease audio",
+                "title": "Audio -10%",
                 "cmd": "pactl -- set-sink-volume 0 -10%"
+            },
+
+            {
+                "alt": ["Shift"],
+                "key": "=",
+                "title": "Audio + 5%",
+                "cmd": "pactl -- set-sink-volume 0 +5%"
+            },
+
+            {
+                "alt": ["Shift"],
+                "key": "-",
+                "title": "Audio -5%",
+                "cmd": "pactl -- set-sink-volume 0 -5%"
             }
         ],
 
