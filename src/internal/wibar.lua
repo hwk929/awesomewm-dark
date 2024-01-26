@@ -11,6 +11,11 @@ local volume_widget = require("pkg.widgets.volume.speaker")
 local upgradeable_widget = require("pkg.widgets.packages.upgrade")
 local date_widget = require("pkg.widgets.date.clock")
 local logout_widget = require("pkg.widgets.logout.menu")
+local ping_widget = require("pkg.widgets.ping.up")(
+    cfg.config.extra.ping.amount,
+    cfg.config.extra.ping.frequency,
+    cfg.config.extra.ping.hosts
+)
 
 -- Full fade list:
 --   "#ffffff",
@@ -250,6 +255,7 @@ awful.screen.connect_for_each_screen(function(s)
                     {
                         capslock_widget,
                         volume_widget,
+                        ping_widget,
                         upgradeable_widget,
 
                         spacing = 12,

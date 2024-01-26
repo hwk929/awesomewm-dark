@@ -9,7 +9,7 @@ local clock = {
     widget = wibox.container.margin,
 }
 
-local calendar = calendar_widget{
+local calendar = calendar_widget {
     placement = "top_right",
 }
 

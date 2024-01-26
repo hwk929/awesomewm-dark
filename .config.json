@@ -122,5 +122,19 @@
                 "cmd": "copyq menu"
             }
         ]
+    },
+
+    "extra": {
+        "ping": {
+            "hosts": [
+                { "name": "Adblocker", "host": "pi.hole" },
+                { "name": "Proxmox", "host": "proxmox.selfhosted.local" },
+                { "name": "Docker", "host": "docker.selfhosted.local" },
+                { "name": "Arch Linux", "host": "archlinux.org" }
+            ],
+
+            "frequency": 120,
+            "amount": 2
+        }
     }
 }
