@@ -52,6 +52,33 @@ local connections_list = awful.popup {
     end
 }
 
+local hosts_widget = { layout = wibox.layout.fixed.vertical }
+local connection_refresh = wibox.widget {
+    {
+        {
+            markup = "<span weight='bold'>Refresh All</span>",
+            align = "center",
+            forced_width = 200,
+            widget = wibox.widget.textbox
+        },
+
+        forced_height = 25,
+        layout = wibox.layout.fixed.horizontal
+    },
+
+    bg = beautiful.bg_focus,
+    widget = wibox.container.background
+}
+
+local function update_hosts_widget()
+    connections_list:setup({
+        hosts_widget,
+        connection_refresh,
+
+        layout = wibox.layout.fixed.vertical
+    })
+end
+
 ping_widget:buttons(
     awful.util.table.join(awful.button({}, 1, function()
         if connections_list.visible then
@@ -61,19 +88,31 @@ ping_widget:buttons(
             connections_list:move_next_to(mouse.current_widget_geometry)
             ping_widget:set_bg(beautiful.bg_focus)
 
-            ping(PING_LIST, PING_COUNT)
+            update_hosts_widget()
         end
     end))
 )
 
+connection_refresh:buttons(
+    awful.util.table.join(awful.button({}, 1, function()
+        ping(PING_LIST, PING_COUNT)
+    end))
+)
+
+connection_refresh:connect_signal("mouse::enter", function() connection_refresh.bg = beautiful.bg_normal end)
+connection_refresh:connect_signal("mouse::leave", function() connection_refresh.bg = beautiful.bg_focus end)
+connection_refresh:connect_signal("button::press", function() connection_refresh.bg = beautiful.bg_focus end)
+connection_refresh:connect_signal("button::release", function() connection_refresh.bg = beautiful.bg_normal end)
+
 awesome.connect_signal("signal::update_ping_status", function(hosts)
-    local hosts_widget = { layout = wibox.layout.fixed.vertical }
     local failed = 0
     local icons = {
         [-1] = ICON_DIR .. "loading.png",
         [0] = ICON_DIR .. "connected.png",
         [1] = ICON_DIR .. "disconnected.png"
     }
+
+    hosts_widget = { layout = wibox.layout.fixed.vertical }
 
     for _, v in pairs(hosts) do
         local ico = v.status
@@ -95,7 +134,7 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
                     widget = wibox.widget.imagebox
                 },
 
-                margins = 2,
+                margins = 4,
                 widget = wibox.container.margin
             },
 
@@ -105,12 +144,13 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
             },
 
             forced_height = 25,
+            forced_width = 200,
             layout = wibox.layout.fixed.horizontal
         }
     end
 
     if connections_list.visible then
-        connections_list:setup(hosts_widget)
+        update_hosts_widget()
     end
 
     ping_widget:get_children_by_id("ping_role")[1].markup =
@@ -119,6 +159,7 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
         " </span>"
 end)
 
+-- TODO: Multi monitor support
 return function(count, freq, lists)
     if count ~= nil then PING_COUNT = count end
     if freq ~= nil then PING_FREQUANCY = freq end
@@ -127,10 +168,7 @@ return function(count, freq, lists)
     gears.timer {
         timeout = PING_FREQUANCY,
         autostart = true,
-        callback = function()
-            print(freq)
-            ping(PING_LIST, PING_COUNT)
-         end
+        callback = function() ping(PING_LIST, PING_COUNT) end
     }
 
     ping(PING_LIST, PING_COUNT)
