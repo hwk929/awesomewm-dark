@@ -22,7 +22,7 @@ local ping_widget = wibox.widget {
             widget = wibox.container.margin
         },
 
-        -- TODO: Fix margins
+        -- TODO: Fix margin
         {
             id = "ping_role",
             markup = "<span weight='bold'> 0/" .. #PING_LIST .. " </span>",
@@ -79,6 +79,31 @@ local function update_hosts_widget()
     })
 end
 
+local function get_current_screen()
+    local mouse_coords = mouse.coords()
+
+    for i = 1, screen:count() do
+        local screen_geom = screen[i].geometry
+
+        if mouse_coords.x >= screen_geom.x and
+                mouse_coords.x < screen_geom.x + screen_geom.width and
+                mouse_coords.y >= screen_geom.y and
+                mouse_coords.y < screen_geom.y + screen_geom.height then
+            return i
+        end
+    end
+
+    return nil
+end
+
+local function update_list()
+    local current_screen_index = get_current_screen()
+
+    if current_screen_index ~= nil and not connections_list.visible then
+        connections_list:set_screen(screen[current_screen_index])
+    end
+end
+
 ping_widget:buttons(
     awful.util.table.join(awful.button({}, 1, function()
         if connections_list.visible then
@@ -99,10 +124,17 @@ connection_refresh:buttons(
     end))
 )
 
+-- Animations
 connection_refresh:connect_signal("mouse::enter", function() connection_refresh.bg = beautiful.bg_normal end)
 connection_refresh:connect_signal("mouse::leave", function() connection_refresh.bg = beautiful.bg_focus end)
 connection_refresh:connect_signal("button::press", function() connection_refresh.bg = beautiful.bg_focus end)
 connection_refresh:connect_signal("button::release", function() connection_refresh.bg = beautiful.bg_normal end)
+
+-- Ensure list stays on proper montior
+ping_widget:connect_signal("mouse::enter", update_list)
+ping_widget:connect_signal("mouse::move", update_list)
+ping_widget:connect_signal("button::press", update_list)
+connections_list:connect_signal("mouse::enter", update_list)
 
 awesome.connect_signal("signal::update_ping_status", function(hosts)
     local failed = 0
@@ -159,7 +191,6 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
         " </span>"
 end)
 
--- TODO: Multi monitor support
 return function(count, freq, lists)
     if count ~= nil then PING_COUNT = count end
     if freq ~= nil then PING_FREQUANCY = freq end
