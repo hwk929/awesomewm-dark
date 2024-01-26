@@ -22,11 +22,15 @@ local ping_widget = wibox.widget {
             widget = wibox.container.margin
         },
 
-        -- TODO: Fix margin
         {
-            id = "ping_role",
-            markup = "<span weight='bold'> 0/" .. #PING_LIST .. " </span>",
-            widget = wibox.widget.textbox
+            {
+                id = "ping_role",
+                markup = "<span weight='bold'> 0/" .. #PING_LIST .. "</span>",
+                widget = wibox.widget.textbox
+            },
+
+            right = 2,
+            layout = wibox.layout.margin,
         },
 
         layout = wibox.layout.fixed.horizontal
@@ -188,7 +192,7 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
     ping_widget:get_children_by_id("ping_role")[1].markup =
         "<span weight='bold'> "
             .. (#PING_LIST-failed) .. "/" .. #PING_LIST ..
-        " </span>"
+        "</span>"
 end)
 
 return function(count, freq, lists)
