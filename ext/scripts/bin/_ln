@@ -11,4 +11,4 @@ fi
 ln -sf $scripts_dir/dual-tv /home/hwk/.config/screenlayout/dual-tv.sh
 
 # resolv-pi
-sudo ln -sf $scripts_dir/_resolv-pi /usr/local/bin/resolv-pi
+ln -sf $scripts_dir/_resolv-pi /usr/local/bin/resolv-pi
