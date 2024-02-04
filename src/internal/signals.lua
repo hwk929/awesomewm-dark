@@ -1,4 +1,3 @@
-local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
@@ -21,18 +20,6 @@ end)
 
 -- Titlebars
 client.connect_signal("request::titlebars", function(c)
-    local buttons = gears.table.join(
-        awful.button({}, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-
-        awful.button({}, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
-    )
-
     awful.titlebar(c, { position = "left", size = 30 }) : setup {
         {
 
@@ -75,20 +62,7 @@ client.connect_signal("request::titlebars", function(c)
                 margins = 6,
             },
 
-            {
-                {
-                    {
-                        halign = "left",
-                        widget = awful.titlebar.widget.titlewidget(c)
-                    },
-
-                    widget = wibox.container.rotate,
-                    direction = "east",
-                },
-
-                buttons = buttons,
-                layout = wibox.layout.fixed.vertical,
-            },
+            { layout = wibox.layout.fixed.vertical },
 
             {
                 {
@@ -127,14 +101,20 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Toggle titlebar when floating
 local function float_toggle(c)
-    if c.floating then
+    if c.floating and not c.maximized then
         awful.titlebar.show(c, "left")
         c.border_color = beautiful.border_normal
     else
         awful.titlebar.hide(c, "left")
         c.border_color = beautiful.border_focus
     end
+
+    -- Deal with maximized windows
+    if c.maximized then
+        c.border_color = beautiful.border_normal
+    end
 end
 
 client.connect_signal("property::floating", float_toggle)
+client.connect_signal("property::maximized", float_toggle)
 client.connect_signal("manage", float_toggle)

@@ -128,7 +128,6 @@ local function createFade(self, c3, index, objects)
         "</span>"
 end
 
-
 awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
     awful.tag({
