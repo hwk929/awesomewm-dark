@@ -4,7 +4,7 @@ local drop = require("src.components.drop")
 
 return gears.table.join(
     awful.button({}, 3, function()
-        drop.mymainmenu:toggle()
+        drop:toggle()
     end),
 
     awful.button({}, 4, awful.tag.viewnext),

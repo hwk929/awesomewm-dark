@@ -1,7 +1,13 @@
 {
     "modkey": "Mod4",
     "terminal": "alacritty",
-    "editor": "alacritty -e code",
+    "editor": "code",
+
+    "context": [
+        ["Web Browser", "firefox"],
+        ["File Brower", "pcmanfm"],
+        ["Clipboard", "copyq menu"]
+    ],
 
     "window": {
         "spawn_slave": false,
@@ -27,7 +33,7 @@
 
         "floating": {
             "instance": ["copyq"],
-            "class": ["Arandr", "Quaver", "pavucontrol"],
+            "class": ["Arandr", "Quaver", "pavucontrol", "XIVLauncher.Core"],
             "name": ["Event Tester"],
             "role": ["pop-up"]
         },
@@ -50,6 +56,17 @@
 
                 "properties": {
                     "tag": "8"
+                }
+            },
+
+            {
+                "rule": {
+                    "class": "ffxiv_dx11.exe"
+                },
+
+                "properties": {
+                    "maximized_vertical": true,
+                    "maximized_horizontal": true
                 }
             }
         ]
@@ -113,6 +130,13 @@
                 "key": "r",
                 "title": "rofi run",
                 "cmd": "rofi -disable-history -show run"
+            },
+
+            {
+                "alt": [],
+                "key": "w",
+                "title": "rofi window",
+                "cmd": "rofi -disable-history -show window"
             },
 
             {
