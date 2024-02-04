@@ -142,6 +142,7 @@ connections_list:connect_signal("mouse::enter", update_list)
 
 awesome.connect_signal("signal::update_ping_status", function(hosts)
     local failed = 0
+    local finished = false
     local icons = {
         [-1] = ICON_DIR .. "loading.png",
         [0] = ICON_DIR .. "connected.png",
@@ -183,16 +184,23 @@ awesome.connect_signal("signal::update_ping_status", function(hosts)
             forced_width = 200,
             layout = wibox.layout.fixed.horizontal
         }
+
+        finished = v.status ~= -1
     end
 
     if connections_list.visible then
         update_hosts_widget()
     end
 
-    ping_widget:get_children_by_id("ping_role")[1].markup =
-        "<span weight='bold'> "
-            .. (#PING_LIST-failed) .. "/" .. #PING_LIST ..
-        "</span>"
+    if finished then
+        ping_widget:get_children_by_id("ping_role")[1].markup =
+            "<span weight='bold'> "
+                .. (#PING_LIST-failed) .. "/" .. #PING_LIST ..
+            "</span>"
+        return
+    end
+
+    ping_widget:get_children_by_id("ping_role")[1].markup = "<span weight='bold'> ?/" .. #PING_LIST .. "</span>"
 end)
 
 return function(count, freq, lists)
