@@ -1,6 +1,7 @@
 # Local
 /tmp
 todo
+.rc.lua
 
 # Private
 /bin/autostart

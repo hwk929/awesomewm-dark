@@ -12,7 +12,7 @@
 
 ## Setup
 
-This will only setup `awesome`. Everything in `/ext` only exists as a personal backup.
+This will only setup `awesome`, nothing in `/ext`. Everything in `/ext` only exists as a personal backup. I do not use `awesome-git`. As of now, I'm using version v4.3.
 
 ```sh
 $ cp .config.json config.json
