@@ -44,7 +44,7 @@ local popup = awful.popup {
 local rows = { layout = wibox.layout.fixed.vertical }
 local font = beautiful.font
 
-local onlock = function() awful.spawn.with_shell("i3lock") end
+local onlock = function() awful.spawn.with_shell("i3lock-wrapper") end
 local onreboot = function() awful.spawn.with_shell("reboot") end
 local onpoweroff = function() awful.spawn.with_shell("shutdown now") end
 
