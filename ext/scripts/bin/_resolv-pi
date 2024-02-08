@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 # Toggle pi.hole server
 #  chatter +/-i for VPNs and such
