@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# Link scripts to proper locations
+#  Any file beginning with _ requires root.
+
 scripts_dir="/home/hwk/dev/bin"
 
 if [ "$EUID" -ne 0 ]; then

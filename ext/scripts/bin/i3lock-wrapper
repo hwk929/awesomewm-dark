@@ -1,5 +1,8 @@
 #!/usr/bin/sh
 
+# Wrapper script for i3lock-color
+#  Based on the dracula theme
+
 font="sans-serif"
 
 bg="1e2029"
