@@ -5,7 +5,7 @@
 
     "context": [
         ["Web Browser", "firefox"],
-        ["File Brower", "pcmanfm"],
+        ["File Browser", "pcmanfm"],
         ["Clipboard", "copyq menu"]
     ],
 

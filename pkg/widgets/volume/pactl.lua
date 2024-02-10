@@ -4,7 +4,7 @@
 local spawn = require("awful.spawn")
 local pactl = {}
 
--- NOTE: Change this if pactl decides to get silly
+-- TODO: Change this if pactl decides to get silly
 local device = "@DEFAULT_SINK@"
 
 local function popen_and_return(cmd)

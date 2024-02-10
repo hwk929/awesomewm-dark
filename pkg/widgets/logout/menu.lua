@@ -44,14 +44,18 @@ local popup = awful.popup {
 local rows = { layout = wibox.layout.fixed.vertical }
 local font = beautiful.font
 
-local onlock = function() awful.spawn.with_shell("i3lock-wrapper") end
-local onreboot = function() awful.spawn.with_shell("reboot") end
-local onpoweroff = function() awful.spawn.with_shell("shutdown now") end
+local function ondo(fn)
+    return function()
+        logout_menu_widget:set_bg("#00000000")
+
+        return awful.spawn.with_shell(fn)
+    end
+end
 
 local menu_items = {
-    { name = "Lock", icon_name = "lock.svg", command = onlock },
-    { name = "Reboot", icon_name = "refresh-cw.svg", command = onreboot },
-    { name = "Power off", icon_name = "power.svg", command = onpoweroff },
+    { name = "Lock", icon_name = "lock.svg", command = ondo("i3lock-wrapper") },
+    { name = "Reboot", icon_name = "refresh-cw.svg", command = ondo("reboot") },
+    { name = "Power off", icon_name = "power.svg", command = ondo("shutdown now") },
 }
 
 for _, item in ipairs(menu_items) do

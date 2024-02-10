@@ -6,7 +6,6 @@ require("src.util.config"):new(
     "/home/hwk/.config/awesome/bin/autostart"
 )
 
--- Awesome
 require("src.internal.error")
 require("src.internal.wibar")
 require("src.internal.rules")
