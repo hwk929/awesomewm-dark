@@ -56,7 +56,7 @@ local updates = wibox.widget {
         layout = wibox.layout.fixed.horizontal
     },
 
-    left = 5, -- push taskbar widget left
+    left = 10, -- push taskbar widget left
     layout = wibox.container.margin
 }
 
