@@ -23,14 +23,9 @@ local ping_widget = wibox.widget {
         },
 
         {
-            {
-                id = "ping_role",
-                markup = "<span weight='bold'> 0/" .. #PING_LIST .. "</span>",
-                widget = wibox.widget.textbox
-            },
-
-            right = 2,
-            layout = wibox.layout.margin,
+            id = "ping_role",
+            markup = "<span weight='bold'> 0/" .. #PING_LIST .. "</span>",
+            widget = wibox.widget.textbox
         },
 
         layout = wibox.layout.fixed.horizontal

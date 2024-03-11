@@ -188,6 +188,10 @@ local function worker(user_args)
         end
     end
 
+    function calendar_widget.get_toggle()
+        return popup.visible
+    end
+
     return calendar_widget
 end
 
