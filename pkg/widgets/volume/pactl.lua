@@ -18,8 +18,8 @@ local function popen_and_return(cmd)
 end
 
 
-function pactl.mute_toggle()
-    spawn("pactl set-sink-mute " .. device .. " toggle", false)
+function pactl.show_gui()
+    spawn("pavucontrol")
 end
 
 function pactl.get_volume()

@@ -36,23 +36,28 @@ gears.timer {
 local updates = wibox.widget {
     {
         {
-            id = "volume_mute_role",
-            image = ICON_DIR .. "on.svg",
-            widget = wibox.widget.imagebox
+            {
+                id = "volume_mute_role",
+                image = ICON_DIR .. "on.svg",
+                widget = wibox.widget.imagebox
+            },
+
+            margins = 2,
+            widget = wibox.container.margin
         },
 
-        margins = 2,
-        widget = wibox.container.margin
+        {
+            id = "volume_value_role",
+            markup = "<span weight='bold'> 0%</span>",
+            widget = wibox.widget.textbox
+        },
+
+        visible = true,
+        layout = wibox.layout.fixed.horizontal
     },
 
-    {
-        id = "volume_value_role",
-        markup = "<span weight='bold'> 0%</span>",
-        widget = wibox.widget.textbox
-    },
-
-    visible = true,
-    layout = wibox.layout.fixed.horizontal
+    left = 6,
+    layout = wibox.container.margin
 }
 
 awesome.connect_signal("signal::volume_update", function(c)
@@ -72,7 +77,7 @@ awesome.connect_signal("signal::volume_mute_update", function(c)
 end)
 
 updates:connect_signal("button::press", function()
-    pactl.mute_toggle()
+    pactl.show_gui()
     fetch_volume()
 end)
 

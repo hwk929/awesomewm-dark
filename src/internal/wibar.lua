@@ -6,7 +6,6 @@ local wibox = require("wibox")
 local cfg = require("src.util.config")
 
 local taskbar_widget = require("pkg.widgets.taskbar.tray")
-local capslock_widget = require("pkg.widgets.caps.lock")
 local volume_widget = require("pkg.widgets.volume.speaker")
 local upgradeable_widget = require("pkg.widgets.packages.upgrade")
 local date_widget = require("pkg.widgets.date.clock")
@@ -252,7 +251,6 @@ awful.screen.connect_for_each_screen(function(s)
 
                 {
                     {
-                        capslock_widget,
                         volume_widget,
                         ping_widget,
                         upgradeable_widget,

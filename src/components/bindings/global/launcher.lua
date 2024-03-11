@@ -17,7 +17,7 @@ return gears.table.join(
             awful.screen.focused().mypromptbox:run()
         end,
 
-        { description = "Run prompt", group = "Launcher" }
+        { description = "Emergency run prompt", group = "Launcher" }
     ),
 
     awful.key({ cfg.config.modkey }, "p",
