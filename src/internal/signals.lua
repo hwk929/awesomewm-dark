@@ -20,50 +20,8 @@ end)
 
 -- Titlebars
 client.connect_signal("request::titlebars", function(c)
-    awful.titlebar(c, { position = "left", size = 30 }) : setup {
+    awful.titlebar(c, { position = "top", size = 30 }) : setup {
         {
-
-            {
-                {
-                    {
-                        {
-                            awful.titlebar.widget.closebutton(c),
-                            layout = wibox.layout.fixed.vertical
-                        },
-
-                        layout = wibox.container.margin,
-                        bottom = 5,
-                    },
-
-                    {
-                        {
-                            awful.titlebar.widget.maximizedbutton(c),
-                            layout = wibox.layout.fixed.vertical
-                        },
-
-                        layout = wibox.container.margin,
-                        bottom = 5,
-                    },
-
-                    {
-                        {
-                            awful.titlebar.widget.minimizebutton(c),
-                            layout = wibox.layout.fixed.vertical
-                        },
-
-                        layout = wibox.container.margin,
-                        bottom = 5,
-                    },
-
-                    layout = wibox.layout.fixed.vertical
-                },
-
-                layout = wibox.container.margin,
-                margins = 6,
-            },
-
-            { layout = wibox.layout.fixed.vertical },
-
             {
                 {
                     awful.titlebar.widget.iconwidget(c),
@@ -71,11 +29,21 @@ client.connect_signal("request::titlebars", function(c)
                 },
 
                 layout = wibox.container.margin,
-                margins = 8,
+                left = 15,
+                right = 15,
+                top = 6,
+                bottom = 6,
             },
 
+            {
+                awful.titlebar.widget.titlewidget(c),
+                layout = wibox.layout.fixed.horizontal
+            },
+
+            { layout = wibox.layout.fixed.horizontal },
+
             expand = "none",
-            layout = wibox.layout.align.vertical,
+            layout = wibox.layout.align.horizontal,
         },
 
         widget = wibox.container.margin,
@@ -102,10 +70,10 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Toggle titlebar when floating
 local function float_toggle(c)
     if c.floating and not c.maximized then
-        awful.titlebar.show(c, "left")
+        awful.titlebar.show(c, "top")
         c.border_color = beautiful.border_normal
     else
-        awful.titlebar.hide(c, "left")
+        awful.titlebar.hide(c, "top")
         c.border_color = beautiful.border_focus
     end
 
