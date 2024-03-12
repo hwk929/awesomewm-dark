@@ -29,10 +29,10 @@ client.connect_signal("request::titlebars", function(c)
                 },
 
                 layout = wibox.container.margin,
-                left = 15,
-                right = 15,
-                top = 6,
-                bottom = 6,
+                left = 10,
+                right = 10,
+                top = 8,
+                bottom = 8,
             },
 
             {
