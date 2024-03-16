@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-
-# Disable mouse copying
-#  https://wiki.archlinux.org/title/clipboard
-
-while true; do
-    xsel -fin < /dev/null
-done

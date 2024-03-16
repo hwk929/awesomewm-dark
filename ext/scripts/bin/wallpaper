@@ -1,9 +1,0 @@
-#!/usr/bin/sh
-
-# Random wallpaper for awesomewm
-#  Select a random wallpaper from walls
-
-walls=/home/hwk/Pictures/wallpapers
-bg=/home/hwk/.config/awesome/pkg/theme
-
-ln -sf $walls/$(ls $walls | shuf -n 1) $bg/bg
