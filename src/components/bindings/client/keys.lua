@@ -3,7 +3,11 @@ local awful = require("awful")
 local cfg = require("src.util.config")
 
 return gears.table.join(
-    awful.key( { cfg.config.modkey, "Control" }, "space", awful.client.floating.toggle, { description = "Toggle floating", group = "Client" }),
+    awful.key(
+        { cfg.config.modkey, "Control" }, "space", awful.client.floating.toggle,
+        { description = "Toggle floating", group = "Client" }
+    ),
+
     awful.key({ cfg.config.modkey, "Shift" }, "f",
         function(c)
             c.fullscreen = not c.fullscreen
@@ -23,7 +27,9 @@ return gears.table.join(
 
     awful.key({ cfg.config.modkey, "Control" }, "Return",
         function(c)
-            c:swap(awful.client.getmaster())
+            if c ~= nil then
+                c:swap(awful.client.getmaster())
+            end
         end,
 
         { description = "Move to master", group = "Client" }
