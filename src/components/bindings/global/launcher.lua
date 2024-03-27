@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local menubar = require("menubar")
 local cfg = require("src.util.config")
 
 return gears.table.join(
@@ -18,13 +17,5 @@ return gears.table.join(
         end,
 
         { description = "Emergency run prompt", group = "Launcher" }
-    ),
-
-    awful.key({ cfg.config.modkey }, "p",
-        function()
-            menubar.show()
-        end,
-
-        { description = "Show the menubar", group = "Launcher" }
     )
 )

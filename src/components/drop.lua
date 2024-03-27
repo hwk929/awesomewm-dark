@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local cfg = require("src.util.config")
@@ -20,7 +19,5 @@ local menu = awful.menu({
         {{ "Terminal", cfg.config.terminal }}
     )
 })
-
-menubar.utils.terminal = cfg.config.terminal
 
 return menu
