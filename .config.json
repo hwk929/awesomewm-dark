@@ -103,7 +103,7 @@
             }
         ],
 
-        "Applications": [
+        "Launcher": [
             {
                 "alt": [],
                 "key": "\\",
