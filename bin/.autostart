@@ -9,6 +9,3 @@ run() {
 # Applications
 #run "picom"
 #run "lxsession"
-
-# Screen config
-#run "/home/hwk/dev/bin/wallpaper"
