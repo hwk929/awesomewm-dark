@@ -1,8 +1,18 @@
 local gears = require("gears")
 local awful = require("awful")
+local beautiful = require("beautiful")
+local ascreen = require("awful.screen")
 local cfg = require("src.util.config")
 
 return gears.table.join(
+    awful.key({ cfg.config.modkey }, ";",
+        function()
+            ascreen.focused().selected_tag.master_width_factor = beautiful.master_width_factor or 0.5
+        end,
+
+        { description = "Reset master width factor", group = "Layout" }
+    ),
+
     awful.key({ cfg.config.modkey }, "l",
         function()
             awful.tag.incmwfact(0.05)
