@@ -66,23 +66,5 @@ return gears.table.join(
         end,
 
         { description = "(un)maximize", group = "Client" }
-    ),
-
-    awful.key({ cfg.config.modkey, "Control" }, "m",
-        function(c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end,
-
-        { description = "(un)maximize vertically", group = "Client" }
-    ),
-
-    awful.key({ cfg.config.modkey, "Shift" }, "m",
-        function(c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end,
-
-        { description = "(un)maximize horizontally", group = "Client" }
     )
 )
