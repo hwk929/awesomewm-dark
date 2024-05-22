@@ -37,18 +37,4 @@ cc:connect_signal("button::press", function(_, _1, _2, button) -- luacheck: no u
     end
 end)
 
--- ping_widget:buttons(
---     awful.util.table.join(awful.button({}, 1, function()
---         if connections_list.visible then
---             connections_list.visible = not connections_list.visible
---             ping_widget:set_bg("#00000000")
---         else
---             connections_list:move_next_to(mouse.current_widget_geometry)
---             ping_widget:set_bg(beautiful.bg_focus)
-
---             update_hosts_widget()
---         end
---     end))
--- )
-
 return clock_margins
