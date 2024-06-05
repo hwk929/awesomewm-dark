@@ -1,4 +1,4 @@
-# Awesome Configuration
+# Dracula Dark AwesomeWM Configuration
 
 ![code-size](https://img.shields.io/github/languages/code-size/cyan903/awesome) ![last-commit](https://img.shields.io/github/last-commit/cyan903/awesome)
 
